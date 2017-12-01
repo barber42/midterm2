@@ -1,0 +1,37 @@
+<!--admin.html (for midterm2 webstore) -->
+
+<html>
+<!--Angular-->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<!--Bootstrap-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!--Local Script-->
+<script src='javascripts/app.js'></script>
+
+<title>Admin Store Ctrl</title>
+
+</head>
+<body ng-app='product' ng-controller="MainCtrl">
+	
+<div class="header">
+	<h1>STORE INVENTORY MANAGEMENT</h1>
+</div>
+
+<form ng-submit='addMerch()'>
+	<h2>Add Merchandise</h2><br>
+	Product Name:<input type='text' ng-model='itemName'></input><br>
+	Product Price:<input type='text' ng-model='itemPrice'></input><br>
+	Picture URL:<input type='url' ng-model='itemPic'></input><br>
+	<button type='submit'>Add Merchandise</button>
+</form>
+
+
+<div ng-repeat="product in inventory | orderBy: '-order'">
+	<img class='avatar' ng-src='{{product.photo}}'/><br>
+	<span class="glyphicon glyphicon-remove" ng-click="removeMerch(product)"></span>
+	{{product.name}} - ${{product.price}} - ordered {{product.order}} 
+</div>
+
+
+</body>
+</html>
